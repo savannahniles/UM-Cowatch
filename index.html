@@ -107,13 +107,26 @@
             });
             // player.setRenderObject(renderObjects);
 
+            ///////// co-watching /////////
+
             console.log ("hello");
 
-            UMevents.clientname('cowatch');
-            UMevents.on('cowatch-helloWorld', function(e) {
+            //set the group name
+
+            var groupNameButton = document.getElementById('groupNameButton');
+            var groupNameInput = document.getElementById('groupNameInput');
+            groupNameButton.addEventListener('click', function() {
+
+                var groupName = groupNameInput.value;
+                console.log (groupName);
+                UMevents.clientname(groupName);
+            })
+
+            UMevents.on('playVideo', function(e) {
                 console.log (e.type);
                 console.log (e.name);
                 console.log (e.data);
+                
                 player.play();
             });
 
@@ -123,6 +136,8 @@
 
 </head>
 <body>
+    <input id="groupNameInput"></input>
+    <button id="groupNameButton">Set Group Name</button>
 
     <!-- Placeholder for video player -->
     <div id="um_video_player_wrapper"></div>
