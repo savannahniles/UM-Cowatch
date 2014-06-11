@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>um-video-player.js test</title>
+    <title>cowatching test</title>
 
     <!-- Dependancies -->
     <!-- <link rel="stylesheet" href="./css/video-js.css" /> -->
@@ -16,7 +16,11 @@
     <!-- Custom Style Sheets -->
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
 
-    <!-- Basic Usage of um-video-player.js-->
+    <!-- UM events-->
+    <script src="http://um-events.media.mit.edu:10002/socket.io/socket.io.js"></script>
+    <script src="http://um-events.media.mit.edu:10002/client.js"></script>
+
+    <script src="um-cowatch.js"></script>
     <script>
 
         // var renderObject = {
@@ -102,6 +106,16 @@
                 "classString" : "um-video-player video_element"
             });
             // player.setRenderObject(renderObjects);
+
+            console.log ("hello");
+
+            UMevents.clientname('cowatch');
+            UMevents.on('cowatch-helloWorld', function(e) {
+                console.log (e.type);
+                console.log (e.name);
+                console.log (e.data);
+                player.play();
+            });
 
         };
     
